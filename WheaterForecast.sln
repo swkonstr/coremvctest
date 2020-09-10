@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WheaterForecast", "WheaterForecast\WheaterForecast.csproj", "{21130EA2-D2B6-4887-B9FB-D98855A4FAB4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{21130EA2-D2B6-4887-B9FB-D98855A4FAB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21130EA2-D2B6-4887-B9FB-D98855A4FAB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21130EA2-D2B6-4887-B9FB-D98855A4FAB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21130EA2-D2B6-4887-B9FB-D98855A4FAB4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6B30365E-32F8-4CB3-BEC9-5D8520354835}
+	EndGlobalSection
+EndGlobal

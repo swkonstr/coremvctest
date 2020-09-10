@@ -1,0 +1,87 @@
+﻿@model WeatherRequestModel
+
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <div class="navbar-brand col-md-3 col-lg-2 mr-0 px-3">Шаблон</div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="sidebar-sticky pt-1">
+                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                    <span>Выберите:</span>
+                </h6>
+
+
+            <form asp-controller="Weather" asp-action="Index"
+                  data-ajax="true"
+                  data-ajax-method="POST"
+                  data-ajax-complete="completed"
+                  data-ajax-failure="failed">
+                <input id="from-value" asp-for="@Model.From" type="hidden" />
+                <input id="to-value" asp-for="@Model.To" type="hidden" />
+                <input id="temp-value" asp-for="@Model.Temp" type="hidden" />
+                <input id="pressure-value" asp-for="@Model.Pressure" type="hidden" />
+                <input id="humidity-value" asp-for="@Model.Humidity" type="hidden" />
+                <input id="wind-value" asp-for="@Model.Wind" type="hidden" />
+                <ul class="nav flex-column">
+                    @{
+                        //foreach (WeatherParam wp in Model)
+                        for (int i = 0; i < Model.Params.Count(); i++)
+                        {
+                            <li class="nav-item">
+                                <div class="form-check">
+                                    <input asp-for="@Model.Params[i].IsSelected" type="checkbox" />
+                                    <label asp-for="@Model.Params[i].Id">@Model.Params[i].ParamName</label>
+                                    <input asp-for="@Model.Params[i].IsSelected" type="hidden" />
+                                    <input asp-for="@Model.Params[i].ParamName" type="hidden" />
+                                </div>
+                            </li>
+                        }
+                    }
+                </ul>
+                <button type="submit" class="btn btn-sm btn-outline-secondary">Применить</button>
+            </form>
+            </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <form class="form-inline d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">График</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <label for="label" class="mr-sm-2">Выберите диапазон:</label>
+                    <input type="text" name="daterange" />
+                </div>
+            </form>
+            <div id="chartdiv" class="mh-100" style="height:500px" />
+
+        </main>
+    </div>
+</div>
+<!--</body>
+</html>-->
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js" integrity="sha512-DedNBWPF0hLGUPNbCYfj8qjlEnNE92Fqn7xd3Sscfu7ipy7Zu33unHdugqRD3c4Vj7/yLv+slqZhMls/4Oc7Zg==" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+
+    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/plugins/bullets.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
+    <script src="~/js/daterangepicker.js"></script>
+    <script src="~/js/chart.js"></script>
+
+}
+
+@section Styles {
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+}
